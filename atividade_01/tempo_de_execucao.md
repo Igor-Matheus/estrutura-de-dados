@@ -1,3 +1,3 @@
 ## Comparação dos tempos de execução para os dois algoritmos de ordenação:
 
-<p>Levando em conta o primeiro caso de teste da pasta "instancias-num", verificou-se que o algoritmo insertion sort teve um tempo de execução de 0.017818 segundos (17,818 ms), enquanto que o algoritmo selection sort levou  </p>
+<p>Levando em conta o primeiro caso de teste da pasta "instancias-num" (arquivo num_1000_1.txt), verificou-se que o algoritmo insertion sort teve um tempo de execução de 0.017818 segundos (17,818 ms), enquanto que o algoritmo selection sort levou 0.002999 segundos (2,999 ms). Dessa maneira, conclui-se que o selection sort foi mais rápido para executar, aproximadamente 3 ms. Já o insertion sort demorou mais, com aproximadamente 17,8 ms para executar. </p>
