@@ -1,0 +1,11 @@
+Como Compilar e Executar:
+
+-> Compile os arquivos utilizando um compilador C++ (g++ por exemplo):
+
+    g++ -o insertion_sort insertion_sort.cpp
+    g++ -o selection_sort selection_sort.cpp
+
+-> Execute os programas passando o arquivo de entrada a ser ordenado e o arquivo de saída:
+
+    ./insertion_sort input.txt output_insertion.txt
+    ./selection_sort input.txt output_selection.txt
