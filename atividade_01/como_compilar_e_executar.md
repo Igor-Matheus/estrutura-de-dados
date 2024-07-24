@@ -1,4 +1,4 @@
-Como Compilar e Executar:
+# Como Compilar e Executar:
 
 -> Compile os arquivos utilizando um compilador C++ (g++ por exemplo):
 
