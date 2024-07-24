@@ -5,46 +5,68 @@
 */
 
 #include <iostream>
-#include <stdio.h>
 #include <vector>
+#include <fstream>
+#include <chrono>
 
-using namespace std;
-
-// Função para implementar o algoritmo Insertion Sort
-void insertionSort(vector<int>& arr) {
-    int n = arr.size();
-    for (int i = 1; i < n; ++i) {
+// Função para realizar o Insertion Sort
+void insertionSort(std::vector<int>& arr) {
+    for (size_t i = 1; i < arr.size(); ++i) {
         int key = arr[i];
         int j = i - 1;
-
-        // Move os elementos do vetor arr[0..i-1], que são maiores que a chave,
-        // para uma posição à frente da sua posição atual
         while (j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
-            j = j - 1;
+            j--;
         }
         arr[j + 1] = key;
     }
 }
 
-// Função para imprimir o vetor
-void printArray(const vector<int>& arr) {
-    for (int i = 0; i < arr.size(); ++i) {
-        cout << arr[i] << " ";
+// Função para ler um arquivo e retornar um vetor de inteiros
+std::vector<int> readFile(const std::string& filename) {
+    std::vector<int> data;
+    std::ifstream file(filename);
+    if (file.is_open()) {
+        int value;
+        while (file >> value) {
+            data.push_back(value);
+        }
+        file.close();
+    } else {
+        std::cerr << "Não foi possível abrir o arquivo " << filename << std::endl;
     }
-    cout << endl;
+    return data;
 }
 
-int main() {
-    vector<int> arr = {12, 11, 13, 5, 6};
+// Função para escrever um vetor de inteiros em um arquivo
+void writeFile(const std::string& filename, const std::vector<int>& data) {
+    std::ofstream file(filename);
+    if (file.is_open()) {
+        for (const int& value : data) {
+            file << value << std::endl;
+        }
+        file.close();
+    } else {
+        std::cerr << "Não foi possível abrir o arquivo " << filename << std::endl;
+    }
+}
+
+int main(int argc, char* argv[]) {
+    if (argc != 3) {
+        std::cerr << "Uso: " << argv[0] << " <arquivo_entrada> <arquivo_saida>" << std::endl;
+        return 1;
+    }
+
+    std::vector<int> data = readFile(argv[1]);
+
+    auto start = std::chrono::high_resolution_clock::now();
+    insertionSort(data);
+    auto end = std::chrono::high_resolution_clock::now();
     
-    cout << "Vetor antes da ordenação: \n";
-    printArray(arr);
+    std::chrono::duration<double> duration = end - start;
+    std::cout << "Insertion Sort executado em: " << duration.count() << " segundos" << std::endl;
 
-    insertionSort(arr);
-
-    cout << "Vetor depois da ordenação: \n";
-    printArray(arr);
+    writeFile(argv[2], data);
 
     return 0;
 }
