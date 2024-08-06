@@ -7,4 +7,4 @@
 
 2°) Em seguida, ainda no mesmo diretório da compilação, execute o programa:
 
-    ./test_program
+    test_program
