@@ -7,9 +7,9 @@ using namespace std::chrono; // Para facilitar o uso de "high_resolution_clock"
 
 // Função auxiliar para trocar dois elementos
 void swap(int &a, int &b) {
-    int temp = a;
+    int aux = a;
     a = b;
-    b = temp;
+    b = aux;
 }
 
 // Implementação do Quick Sort
